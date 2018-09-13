@@ -1,16 +1,8 @@
 # You don't (may not) need Moment.js
 
-[Moment.js](https://momentjs.com/) is a fantastic time & date library with lots of great features and utilities. However, if you are working on a performance sensitive web application, it might cause a huge performance overhead because of its complex APIs and large bundle size.
-
-Problems with Moment.js:
-
-- Highly based on OOP APIs, which makes it fail to work with tree-shaking, thus leading to a huge bundle size and performance issues.
-- Moment.js is mutable due to OOP APIs and non-pure functions, which causes bugs:
-  https://github.com/moment/moment/blob/develop/src/test/moment/add_subtract.js#L244-L286
-
-Only using some simple functions from moment.js might be considered overkill, [date-fns](https://github.com/date-fns/date-fns) can be a good replacement in such situations. See https://github.com/moment/moment/issues/2373 for more ideas on why and how people switch from moment.js to date-fns.
-
-<img src="./screenshot.png" alt="Screenshot"/>
+[Moment.js](https://momentjs.com/) is a fantastic time & date library. 
+[date-fns](https://date-fns.org/) is a fantastic time & date library & tiny.
+[You-Dont-Need-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs) is a fantastic recommendation & ad of date-fns.
 
 Problems with date-fns:
 
@@ -20,62 +12,9 @@ Only using native Date static class to be a pure replacement in any other third 
 
 ## Voice of Developers
 
-> [Removed moment.js to replace with date-fns - build output reduced by 40%](https://github.com/oysterprotocol/webnode/pull/116)
+> Removed moment.js/date-fns : npm uninstall -g moment/yarn remove moment/npm uninstall -g date-dns/yarn remove date-dns
 
 > &mdash;<cite>Jared Farago from [webnode](https://github.com/oysterprotocol/webnode/pull/116) project.</cite>
-
-> [Make use of native JavaScript object and array utilities before going big.Good library if you’re looking to replace Moment.js for one reason or another. Immutable too.](https://twitter.com/dan_abramov/status/805030922785525760)
-
-> &mdash;<cite>Dan Abramov, Author of Co-author of [Redux](https://github.com/reduxjs/redux) and [Create React App](https://github.com/facebook/create-react-app). Building tools for humans.</cite>
-
-> [I strongly recommend using date-fns over Moment.js, it's has a nicer API and you can include only parts you need!](https://twitter.com/silvenon/status/804946772690923520)
-
-> &mdash;<cite>Matija Marohnić, a design-savvy frontend developer from Croatia.</cite>
-
-> [Just yesterday changed momentjs to this lib in out project. Cut the size of our js bundle almost in half 😱](https://twitter.com/gribnoysup/status/805061630752997377)
-
-> &mdash;<cite>Sergey Petushkov, a javaScript developer from Moscow, Russia • Currently in Berlin, Germany.</cite>
-
-## ESLint Plugin
-
-<p align="center">
-  <a href="https://www.npmjs.com/package/eslint-plugin-you-dont-need-momentjs">
-    <img src="https://img.shields.io/npm/v/eslint-plugin-you-dont-need-momentjs.svg?style=flat-square"
-      alt="NPM Version">
-  </a>
-  <a href="https://www.npmjs.org/package/eslint-plugin-you-dont-need-momentjs">
-    <img src="http://img.shields.io/npm/dm/eslint-plugin-you-dont-need-momentjs.svg?style=flat-square?style=flat-square"
-      alt="Downloads">
-  </a>
-  <a href="https://travis-ci.org/you-dont-need/You-Dont-Need-Momentjs">
-    <img src="https://img.shields.io/travis/you-dont-need/You-Dont-Need-Momentjs/master.svg?style=flat-square"
-      alt="Build Status">
-  </a>
-  <a href="https://coveralls.io/github/you-dont-need/You-Dont-Need-Momentjs?branch=master">
-    <img src="https://img.shields.io/coveralls/you-dont-need/You-Dont-Need-Momentjs/master.svg?style=flat-square"
-      alt="Coverage Status" />
-  </a>
-  <a href="https://david-dm.org/you-dont-need/You-Dont-Need-Momentjs">
-    <img src="https://img.shields.io/david/you-dont-need/You-Dont-Need-Momentjs.svg?style=flat-square"
-         alt="Dependency Status">
-  </a>
-</p>
-
-If you're using [ESLint](http://eslint.org/), you can install a
-[plugin](http://eslint.org/docs/user-guide/configuring#using-the-configuration-from-a-plugin) that
-will help you identify places in your codebase where you don't (may not) need Moment.js.
-
-Install the plugin...
-
-```sh
-npm install --save-dev eslint-plugin-you-dont-need-momentjs
-```
-
-...then update your config
-
-```js
-"extends" : ["plugin:you-dont-need-momentjs/recommended"],
-```
 
 ## Quick Links
 
