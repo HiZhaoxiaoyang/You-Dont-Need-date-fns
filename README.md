@@ -1,4 +1,4 @@
-# You don't (may not) need Moment.js
+# You don't (may not) need date-fns(or Moment.js)
 
 #### [Moment.js](https://momentjs.com/) is a fantastic time & date library. 
 #### [date-fns](https://date-fns.org/) is a fantastic time & date library & tiny.
