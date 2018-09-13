@@ -7,7 +7,7 @@
 Problems with date-fns:
 
 - Still need to download or clone from npm.
-- Still need to import "date-fns" as a closure or namespace in each business logic file.
+- Still need to import "date-fns" as a closure(or namespace/module/package/component/class/no matter what) in each business logic file.
 
 Only using native Date static class to be a pure replacement in any other third packages, including date-fns.
 
