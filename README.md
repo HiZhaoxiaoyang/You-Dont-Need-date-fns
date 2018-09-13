@@ -1,18 +1,24 @@
 # You don't (may not) need Moment.js
 
-[Moment.js](https://momentjs.com/) is a fantastic time & date library. 
-[date-fns](https://date-fns.org/) is a fantastic time & date library & tiny.
-[You-Dont-Need-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs) is a fantastic recommendation & ad of date-fns.
+#### [Moment.js](https://momentjs.com/) is a fantastic time & date library. 
+#### [date-fns](https://date-fns.org/) is a fantastic time & date library & tiny.
+#### [You-Dont-Need-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs) is a fantastic recommendation & ad of date-fns.
 
 Problems with date-fns:
 
-- Still need to download or clone from npm and import "date-fns" as a closure or namespace in each business logic file.
+- Still need to download or clone from npm.
+- Still need to import "date-fns" as a closure or namespace in each business logic file.
 
 Only using native Date static class to be a pure replacement in any other third packages, including date-fns.
 
 ## Voice of Developers
 
-> Removed moment.js/date-fns : npm uninstall -g moment/yarn remove moment/npm uninstall -g date-dns/yarn remove date-dns
+> Removed moment.js
+- npm uninstall -g moment
+- yarn remove moment
+> Removed date-fns
+- npm uninstall -g date-dns
+- yarn remove date-dns
 
 > &mdash;<cite>Jared Farago from [webnode](https://github.com/oysterprotocol/webnode/pull/116) project.</cite>
 
