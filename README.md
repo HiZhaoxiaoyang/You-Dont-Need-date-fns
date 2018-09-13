@@ -12,6 +12,12 @@ Only using some simple functions from moment.js might be considered overkill, [d
 
 <img src="./screenshot.png" alt="Screenshot"/>
 
+Problems with date-fns:
+
+- Still need to download or clone from npm and import "date-fns" as a closure or namespace in each business logic file.
+
+Only using native Date static class to be a pure replacement in any other third packages, including date-fns.
+
 ## Voice of Developers
 
 > [Removed moment.js to replace with date-fns - build output reduced by 40%](https://github.com/oysterprotocol/webnode/pull/116)
@@ -129,6 +135,10 @@ moment("12-25-1995", "MM-DD-YYYY");
 
 // date-fns
 import parse from "date-fns/parse";
+parse("12-25-1995", "MM-dd-yyyy", new Date());
+// => "1995-12-24T13:00:00.000Z"
+
+// native
 parse("12-25-1995", "MM-dd-yyyy", new Date());
 // => "1995-12-24T13:00:00.000Z"
 ```
