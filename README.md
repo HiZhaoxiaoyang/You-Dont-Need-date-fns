@@ -139,8 +139,8 @@ parse("12-25-1995", "MM-dd-yyyy", new Date());
 // => "1995-12-24T13:00:00.000Z"
 
 // native
-parse("12-25-1995", "MM-dd-yyyy", new Date());
-// => "1995-12-24T13:00:00.000Z"
+new Date('12-25-1995').toISOString()
+// => "1995-12-24T16:00:00.000Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -157,6 +157,10 @@ moment("2010-10-20 4:30", "YYYY-MM-DD HH:mm");
 // date-fns
 import parse from "date-fns/parse";
 parse("2010-10-20 4:30", "yyyy-MM-dd H:mm", new Date());
+// => "2010-10-19T17:30:00.000Z"
+
+// native
+new Date("2010-10-20 01:30").toISOString('zh-CN')
 // => "2010-10-19T17:30:00.000Z"
 ```
 
@@ -176,6 +180,9 @@ import parse from "date-fns/parse";
 import fr from "date-fns/locale/fr";
 parse("2012 mars", "yyyy MMMM", new Date(), { locale: fr });
 // => "2012-02-29T13:00:00.000Z"
+
+// native
+new Date("2012 mars").toISOString({ locale: 'fr' })
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -198,6 +205,12 @@ new Date().getSeconds();
 // => 49
 new Date().getHours();
 // => 19
+
+// another native
+Date.now()%1000%60
+// => 49
+Date.now()%1000%60%24
+// => 19
 ```
 
 Set the `Millisecond/Second/Minute/Hour` of the given date.
@@ -213,6 +226,12 @@ moment().hours(13);
 new Date(new Date().setSeconds(30));
 // => "2018-09-09T09:12:30.695Z"
 new Date(new Date().setHours(13));
+// => "2018-09-09T03:12:49.695Z"
+
+// native local
+new Date(new Date().setSeconds(30)).toISOString()
+// => "2018-09-09T09:12:30.695Z"
+new Date(new Date().setHours(13)).toISOString()
 // => "2018-09-09T03:12:49.695Z"
 ```
 
