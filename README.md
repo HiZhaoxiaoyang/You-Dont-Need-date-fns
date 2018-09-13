@@ -416,6 +416,10 @@ moment().add(7, "days");
 import addDays from "date-fns/addDays";
 addDays(new Date(), 7);
 // => "2018-09-16T09:12:49.695Z"
+
+// native
+new Date(Date.now() + 1000*60*60*24*7).toISOString()
+// => "2018-09-20T10:35:26.795Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -432,6 +436,10 @@ moment().subtract(7, "days");
 // date-fns
 import subDays from "date-fns/subDays";
 subDays(new Date(), 7);
+// => "2018-09-02T09:12:49.695Z"
+
+// native
+new Date(Date.now() - 1000*60*60*24*7).toISOString()
 // => "2018-09-02T09:12:49.695Z"
 ```
 
