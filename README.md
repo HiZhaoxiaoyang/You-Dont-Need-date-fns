@@ -336,6 +336,18 @@ moment.max(array.map(a => moment(a)));
 import max from "date-fns/max";
 max(array);
 // => "2018-03-11T13:00:00.000Z"
+
+/* native es6 */
+new Date(Math.max(...array.map(m => +m))).toISOString()
+
+/* native es5 */
+/*
+ * es5- polyfill(or sort):
+ * Array.prototype.map = function(arr){
+ *    //do sth map/reduce polyfilled.
+ *    return arr
+ * }
+new Date(Math.max.apply(Math, array.map(function(m){ return +m }))).toISOString()
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -359,6 +371,12 @@ moment.min(array.map(a => moment(a)));
 import min from "date-fns/min";
 min(array);
 // => "2016-01-08T13:00:00.000Z"
+
+/* native es6 */
+new Date(Math.min(...array.map(m => +m))).toISOString()
+
+/* native es5 */
+new Date(Math.min.apply(Math, array.map(function(m){ return +m }))).toISOString()
 ```
 
 **[⬆ back to top](#quick-links)**
