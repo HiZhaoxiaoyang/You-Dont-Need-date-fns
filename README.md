@@ -20,8 +20,6 @@ Only using native Date static class to be a pure replacement in any other third 
 - npm uninstall -g date-dns
 - yarn remove date-dns
 
-> &mdash;<cite>Jared Farago from [webnode](https://github.com/oysterprotocol/webnode/pull/116) project.</cite>
-
 ## Quick Links
 
 **[Parse](#parse)**
@@ -83,7 +81,7 @@ import parse from "date-fns/parse";
 parse("12-25-1995", "MM-dd-yyyy", new Date());
 // => "1995-12-24T13:00:00.000Z"
 
-// native
+/* native */
 new Date('12-25-1995').toISOString()
 // => "1995-12-24T16:00:00.000Z"
 ```
@@ -104,7 +102,7 @@ import parse from "date-fns/parse";
 parse("2010-10-20 4:30", "yyyy-MM-dd H:mm", new Date());
 // => "2010-10-19T17:30:00.000Z"
 
-// native
+/* native */
 new Date("2010-10-20 01:30").toISOString('zh-CN')
 // => "2010-10-19T17:30:00.000Z"
 ```
@@ -126,7 +124,7 @@ import fr from "date-fns/locale/fr";
 parse("2012 mars", "yyyy MMMM", new Date(), { locale: fr });
 // => "2012-02-29T13:00:00.000Z"
 
-// native
+/* native */
 new Date("2012 mars").toISOString({ locale: 'fr' })
 ```
 
@@ -151,10 +149,10 @@ new Date().getSeconds();
 new Date().getHours();
 // => 19
 
-// another native
-Date.now()%1000%60
+/* another native */
+Date.now() % 1000 % 60
 // => 49
-Date.now()%1000%60%24
+Date.now() % 1000 % 60 % 24
 // => 19
 ```
 
@@ -173,7 +171,7 @@ new Date(new Date().setSeconds(30));
 new Date(new Date().setHours(13));
 // => "2018-09-09T03:12:49.695Z"
 
-// native local
+/* native local */
 new Date(new Date().setSeconds(30)).toISOString()
 // => "2018-09-09T09:12:30.695Z"
 new Date(new Date().setHours(13)).toISOString()
@@ -218,6 +216,13 @@ new Date().getDay();
 // => 0
 new Date().setDate(new Date().getDate() - 14);
 // => "2018-08-26T09:12:49.695Z"
+
+/* ament it at locally */
+new Date(new Date().setDate(new Date().getDate() - 14)).toISOString()
+// => "2018-08-26T09:12:49.695Z"
+/* another Native */
+new Date(Date.now() - 1000*60*60*24*14).toISOString()
+// => "2018-08-26T09:12:49.695Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -240,6 +245,9 @@ getDayOfYear(new Date());
 import setDayOfYear from "date-fns/setDayOfYear";
 setDayOfYear(new Date(), 256);
 // => "2018-09-13T09:12:49.695Z"
+
+/* Native */
+(Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24|0
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -262,6 +270,9 @@ getWeek(new Date());
 import setWeek from "date-fns/setWeek";
 setWeek(new Date(), 24);
 // => "2018-06-10T09:12:49.695Z"
+
+/* Native */
+((Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24/6-1)>>0
 ```
 
 **[⬆ back to top](#quick-links)**
