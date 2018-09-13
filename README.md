@@ -11,12 +11,6 @@ Problems with date-fns:
 
 Only using native Date static class to be a pure replacement in any other third packages, including date-fns.
 
-
-⚠️ _注意如下实例，这里是date-fns的推荐者提到各种moment.js的api用date-fns的替换api代码示例，再下面/* native */注释后的我写的实例，表示用一行原生Date的实现；_
-
-⚠️ _Note that the examples below is date-fns recommender who mentioned moment.js api replced by date-fns. And after comment /* native */ is append a native date instance._
-
-
 ## Voice of Developers
 
 > Removed moment.js
@@ -27,6 +21,12 @@ Only using native Date static class to be a pure replacement in any other third 
 - yarn remove date-dns
 
 ## Quick Links
+
+
+⚠️ _注意如下实例，这里是date-fns的推荐者提到各种moment.js的api用date-fns的替换api代码示例，再下面/* native */注释后的我写的实例，表示用一行原生Date的实现；_
+
+⚠️ _Note that the examples below is date-fns recommender who mentioned moment.js api replced by date-fns. And after comment /* native */ is append a native date instance._
+
 
 **[Parse](#parse)**
 
