@@ -202,6 +202,10 @@ new Date().getDate();
 // => 9
 new Date().setDate(4);
 // => "2018-09-04T09:12:49.695Z"
+
+/* native */
+new Date(new Date().setDate(4)).toISOString()
+// => "2018-09-04T14:07:37.420Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -252,8 +256,12 @@ import setDayOfYear from "date-fns/setDayOfYear";
 setDayOfYear(new Date(), 256);
 // => "2018-09-13T09:12:49.695Z"
 
-/* Native */
+/* native */
 (Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24|0
+// => 256
+//// setDayOfYear
+new Date(256 *24*60*60*1000 + +new Date(new Date().getFullYear().toString())).toISOString()
+// "2018-09-14T00:00:00.000Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -277,8 +285,9 @@ import setWeek from "date-fns/setWeek";
 setWeek(new Date(), 24);
 // => "2018-06-10T09:12:49.695Z"
 
-/* Native */
-((Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24/6-1)>>0
+/* native */
+Math.ceil((Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24/7)
+// 37
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -295,6 +304,10 @@ moment("2012-02", "YYYY-MM").daysInMonth();
 // date-fns
 import getDaysInMonth from "date-fns/getDaysInMonth";
 getDaysInMonth(new Date(2012, 1));
+// => 29
+
+/* native */
+(+new Date('2012/3')-+new Date('2012/2'))/1000/60/60/24
 // => 29
 ```
 
