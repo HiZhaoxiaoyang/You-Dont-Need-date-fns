@@ -257,6 +257,7 @@ setDayOfYear(new Date(), 256);
 // => "2018-09-13T09:12:49.695Z"
 
 /* native */
+/* +new Date(new Date().getFullYear()+'') === Date.UTC(new Date().getFullYear()) */
 (Date.now()-+new Date(new Date().getFullYear()+''))/1000/60/60/24|0
 // => 256
 //// setDayOfYear
@@ -326,6 +327,9 @@ moment().isoWeeksInYear();
 import getISOWeeksInYear from "date-fns/getISOWeeksInYear";
 getISOWeeksInYear(new Date());
 // => 52
+
+/* native */
+(+new Date('2019')-+new Date('2018'))/1000/60/60/24/7>>0
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -410,7 +414,7 @@ import addDays from "date-fns/addDays";
 addDays(new Date(), 7);
 // => "2018-09-16T09:12:49.695Z"
 
-// native
+/* native */
 new Date(Date.now() + 1000*60*60*24*7).toISOString()
 // => "2018-09-20T10:35:26.795Z"
 ```
@@ -431,7 +435,7 @@ import subDays from "date-fns/subDays";
 subDays(new Date(), 7);
 // => "2018-09-02T09:12:49.695Z"
 
-// native
+/* native */
 new Date(Date.now() - 1000*60*60*24*7).toISOString()
 // => "2018-09-02T09:12:49.695Z"
 ```
@@ -451,6 +455,10 @@ moment().startOf("month");
 import startOfMonth from "date-fns/startOfMonth";
 startOfMonth(new Date());
 // => "2018-08-31T14:00:00.000Z"
+
+/* native */
+new Date(Date.UTC( 2018, new Date().getMonth())-8 *60*60*1000).toISOString()
+// => "2018-08-31T16:00:00.000Z"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -468,6 +476,11 @@ moment().endOf("day");
 import endOfDay from "date-fns/endOfDay";
 endOfDay(new Date());
 // => "2018-09-09T13:59:59.999Z"
+
+/* native */
+//`${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()}` === '2018/9/15'
+new Date(+new Date('2018/9/15')+24*60*60*1000 - 1000)
+// => "Sat Sep 15 2018 23:59:59 GMT+0800 (中国标准时间)"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -491,6 +504,11 @@ format(new Date(), "eeee, MMMM do YYYY, h:mm:ss aa");
 // => "Sunday, September 9th 2018, 7:12:49 PM"
 format(new Date(), "eee, ha");
 // => "Sun, 7PM"
+
+/* native */
+//new Date().toLocaleDateString('en', { weekday: 'long' }).slice(0,3)
+new Date().toString().slice(0,3) + ',' + new Date().toLocaleString('en').replace(/[^AM|PM]/img,'')
+// => "Sat,AM"
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -508,6 +526,12 @@ moment([2018, 8, 9]).fromNow();
 import formatDistance from "date-fns/formatDistance";
 formatDistance(new Date(2018, 8, 9), new Date(), { addSuffix: true });
 // => "4 hours ago"
+
+/* native */
+Math.round((Date.now()-+new Date('2018/9/14'))/1000/60/60)
+// => 24
+// new Date().getMinutes() => 30
+// => 24 hours 30 minutes ago
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -525,6 +549,10 @@ moment([2007, 0, 27]).to(moment([2007, 0, 29]));
 import formatDistance from "date-fns/formatDistance";
 formatDistance(new Date(2007, 0, 27), new Date(2007, 0, 29));
 // => "2 days"
+
+/* native */
+Math.abs((+new Date(2007,0,27) - +new Date(2007,0,29))/1000/60/60/24)
+// => 2
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -547,6 +575,10 @@ differenceInMilliseconds(new Date(2007, 0, 27), new Date(2007, 0, 29));
 import differenceInDays from "date-fns/differenceInDays";
 differenceInDays(new Date(2007, 0, 27), new Date(2007, 0, 29));
 // => -2
+
+/* native */
+Date.UTC(2007,0,27) - Date.UTC(2007,0,29)
+// => -172800000  -_-
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -566,6 +598,10 @@ moment("2010-10-20").isBefore("2010-10-21");
 import isBefore from "date-fns/isBefore";
 isBefore(new Date(2010, 9, 20), new Date(2010, 9, 21));
 // => true
+
+/* native */
+Date.UTC(2010,9,20) - Date.UTC(2010,9,21) < 0
+// isBefore? => ture -_-
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -587,6 +623,10 @@ isSameDay(new Date(2010, 9, 20), new Date(2010, 9, 21));
 // => false
 isSameDay(new Date(2010, 9, 20), new Date(2010, 9, 20));
 // => true
+
+/* native */
+Date.UTC(2010,9,20) - Date.UTC(2010,9,20) === 0
+// isSame? => ture -_-
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -604,6 +644,9 @@ moment("2010-10-20").isAfter("2010-10-19");
 import isAfter from "date-fns/isAfter";
 isAfter(new Date(2010, 9, 20), new Date(2010, 9, 19));
 // => true
+
+/* native */
+// => -_-
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -641,6 +684,10 @@ moment([2000]).isLeapYear();
 import isLeapYear from "date-fns/isLeapYear";
 isLeapYear(new Date(2000, 0, 1));
 // => true
+
+/* native */
+Date.UTC(2001) - Date.UTC(2000) === 31622400000
+// => true
 ```
 
 **[⬆ back to top](#quick-links)**
@@ -657,6 +704,10 @@ moment.isDate(new Date());
 // date-fns
 import isDate from "date-fns/isDate";
 isDate(new Date());
+// => true
+
+/* native */
+new Date(new Date()).toString() !== 'Invalid Date'
 // => true
 ```
 
